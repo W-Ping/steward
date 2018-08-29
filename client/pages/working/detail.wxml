@@ -1,0 +1,106 @@
+<!--pages/working/detail.wxml-->
+<view class='continer' style='position: {{position}}'>
+  <form bindsubmit="editSubmit" bindreset="formReset">
+    <input hidden name="id" value='{{taskInfo.id}}'></input>
+    <input hidden name="version" value='{{taskInfo.version}}'></input>
+    <!-- <view class='task-add'> -->
+    <view class='add-item'>
+      <view>
+        <label>创建人</label>
+      </view>
+      <view>
+        <input name="planHour" disabled="{{true}}" value="{{taskInfo.realName}}"></input>
+      </view>
+    </view>
+    <view class='add-item'>
+      <view>
+        <label>创建时间</label>
+      </view>
+      <view>
+        <input name="planHour" disabled="{{true}}" value="{{taskInfo.create_time}}"></input>
+      </view>
+    </view>
+    <view class='add-item'>
+      <view>
+        <label>任务名称</label>
+      </view>
+      <view>
+        <input placeholder='任务名称' disabled="{{taskInfo.stat==1||taskInfo.stat==2||!taskInfo.isOwn}}" name="taskName" value="{{taskInfo.taskName}}"></input>
+      </view>
+    </view>
+    <view class='add-item'>
+      <view>
+        <label>预估(小时)</label>
+      </view>
+      <view>
+        <input placeholder='计划时间（小时）' disabled="{{taskInfo.stat==1||taskInfo.stat==2||!taskInfo.isOwn}}" type="digit" name="planHour" value="{{taskInfo.planHour}}"></input>
+      </view>
+    </view>
+    <view class='add-item'>
+      <view>
+        <label>任务级别</label>
+      </view>
+      <view style='border:none;'>
+        <radio-group class="group" name="level" bindchange="{{taskInfo.stat==1||taskInfo.stat==2||!taskInfo.isOwn?'':'radioChange'}}">
+          <view class="label" wx:for="{{radioItems}}" wx:key="{{key}}">
+            <radio id="{{item.name}}" hidden value="{{item.value}}" checked="{{item.checked}}"></radio>
+            <view class="label-icon">
+              <view class="icon {{item.checked ? 'checked ': ''}}"></view>
+            </view>
+            <label class="label-text" for="{{item.name}}">
+              <text>{{item.name}}</text>
+            </label>
+          </view>
+        </radio-group>
+      </view>
+    </view>
+    <view class='add-item' wx:if="{{textareaShow}}">
+      <view>
+        <label>任务内容</label>
+      </view>
+      <view style='border:none;'>
+        <textarea name="taskDescribe" disabled="{{taskInfo.stat==1||taskInfo.stat==2||!taskInfo.isOwn}}" value="{{taskInfo.taskDescribe}}" placeholder='任务内容'></textarea>
+      </view>
+    </view>
+    <block wx:if="{{isAssign}}">
+      <input hidden name="stat" value='3'></input>
+      <view class='add-item'>
+        <view>
+          <label>经办人</label>
+        </view>
+        <view class='handler' style=' border: none;'>
+          <view class='handler-text'>
+            <input placeholder='经办人' bindinput="bindinput" value="{{taskInfo.handlerName}}" name="handlerName" />
+          </view>
+          <!-- <textable placeholder='经办人' textable-class="textable" name="handlerName" value="{{taskInfo.handlerName}}" bind:click="showSelect"></textable> -->
+          <view class='handler-btn' bindtap='showSelect'>
+            <text>选择联系人</text>
+          </view>
+        </view>
+        <input hidden name="handlerUid" value='{{taskInfo.handlerUid}}'></input>
+      </view>
+      <view class='add-item'>
+        <view>
+          <label>经办人邮箱</label>
+        </view>
+        <view>
+          <input placeholder='经办人邮箱' value="{{taskInfo.handlerMail}}" name="handlerMail"></input>
+        </view>
+      </view>
+      <view>
+        <button form-type='submit' type='primary'>确定</button>
+      </view>
+    </block>
+    <block wx:if="{{!isAssign}}">
+      <block wx:if="{{taskInfo.isOwn && (taskInfo.stat==0 || taskInfo.stat==3)}}">
+        <view style='margin-bottom:10px; '>
+          <button type="primary" form-type='submit'>保存</button>
+        </view>
+        <view>
+          <button type='warn' data-taskid='{{taskInfo.id}}' bindtap='deleteTask'>删除</button>
+        </view>
+      </block>
+    </block>
+  </form>
+</view>
+<selectable id="selectable" name_key="linkmanName" value_key="linkUid" image_key="linkmanAvatarUrl  " selectItems="{{selectItems}}" multiSelect="{{false}}" bind:closeSelect="closeSelect" catch:selected='selected'></selectable>

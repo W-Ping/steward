@@ -1,0 +1,20 @@
+<!--pages/statistic/address.wxml-->
+<form bindsubmit="formSubmit">
+  <picker mode="region" bindchange="bindRegionChange" adjust-position="{{false}}" value="{{region}}" custom-item="{{customItem}}">
+    <view class='address-box'>
+      <text placeholder="省、市、区" name="region">{{region[0]}}{{region[1]}}{{region[2]}}</text>
+      <input hidden name="region" value='{{region[0]}}{{region[1]}}{{region[2]}}'></input>
+      <view style='padding: 10rpx 0rpx 10rpx 0rpx;'>></view>
+    </view>
+  </picker>
+  <view class='address-box'>
+    <textarea  name="address" bindconfirm="bindconfirm" value='{{address}}'></textarea>
+    <view>
+      <image src='../images/location.png' bindtap='selectAddress'></image>
+    </view>
+  </view>
+  <input name="location" value='{{location}}'></input>
+  <view style='width:80%;margin:0 auto;'>
+    <button formType="submit" type='primary'>确定</button>
+  </view>
+</form>

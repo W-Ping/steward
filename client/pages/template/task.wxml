@@ -1,0 +1,244 @@
+<!--待办模板-->
+<template name="todo-task">
+  <view class='todo-continer'>
+    <view class='todo-box'>
+      <view class='t-task-title'>
+        <view class='title-level'>
+          <text>{{item.levelText}}</text>
+        </view>
+        <view class='title-taskName' data-index='{{index}}' bindtap='navigateToDetail'>
+          <text>{{item.taskName}}</text>
+        </view>
+        <view class='title-bracket' data-index='{{index}}' data-bracket="{{item.bracket?item.bracket:'down'}}" bindtap='bracketClick'>
+          <image class='bk-image' src="../images/{{item.bracket?item.bracket:'down'}}.png"></image>
+        </view>
+      </view>
+      <view class='t-task-info' data-index='{{index}}' bindtap='navigateToDetail'>
+        <text>{{item.taskDescribe}}</text>
+      </view>
+      <view hidden="{{item.hiddenFlag==true || item.hiddenFlag==false ?item.hiddenFlag:true}}">
+        <view class='t-task-time'>
+          <view class='task-item'>
+            <view class='item-text'>
+              <text>创建人</text>
+            </view>
+            <view class='item-value'>
+              <text>{{item.realName}}</text>
+            </view>
+          </view>
+          <view style='display: flex;flex-direction: row;align-items: center;justify-content: center;'>
+            <view class='harp-line'></view>
+          </view>
+          <view class='task-item'>
+            <view class='item-text'>
+              <text>经办人</text>
+            </view>
+            <view class='item-value'>
+              <text>{{item.handlerName?item.handlerName:'未分配'}}</text>
+            </view>
+          </view>
+        </view>
+        <view class='t-task-owner'>
+          <view class='task-item'>
+            <text>创建时间</text>
+          </view>
+          <view style='width:100%;' class='task-item'>
+            <text>{{item.create_time}}</text>
+          </view>
+        </view>
+        <view class='t-task-owner'>
+          <view class='task-item'>
+            <text>任务计划</text>
+          </view>
+          <view class='task-item'>
+            <text>{{item.planHour?item.planHour+'小时':'--'}}</text>
+          </view>
+        </view>
+      </view>
+      <view class='t-task-opt'>
+        <view class='opt-item l-btn' data-index='{{index}}' bindtap='assignTask'>
+          <text>{{item.stat==3?'重新分配':'分 配'}}</text>
+        </view>
+        <view style='display: flex;flex-direction: row;align-items: center;justify-content: center;'>
+          <view class='harp-line'></view>
+        </view>
+        <view wx:if="{{item.isOwn && item.stat==3}}" class='opt-item r-btn' data-index='{{index}}' bindtap='notifyAssigner'>
+          <text>通知经办人</text>
+        </view>
+        <view class='opt-item r-btn' data-index='{{index}}' bindtap='startTask' wx:else>
+          <text>启 动</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+<!-- 进行中模板 -->
+<template name="run-task">
+  <view class='run-continer'>
+    <view class='run-box'>
+      <view class='t-run-title'>
+        <view class='title-level'>
+          <text>{{item.levelText}}</text>
+        </view>
+        <view class='title-taskName'data-index='{{index}}' bindtap='navigateToDetail'>
+          <text>{{item.taskName}}</text>
+        </view>
+        <view class='title-bracket' data-index='{{index}}' data-bracket="{{item.bracket?item.bracket:'down'}}" bindtap='bracketClick'>
+          <image class='bk-image' src="../images/{{item.bracket?item.bracket:'down'}}.png"></image>
+        </view>
+      </view>
+      <view class='t-run-info'>
+        <text>{{item.taskDescribe}}</text>
+      </view>
+      <view class='t-run-time'>
+        <view class='task-item'>
+          <view class='item-text'>
+            <text>任务计划</text>
+          </view>
+          <view class='item-value'>
+            <text>{{item.planHour?item.planHour+'小时':'--'}}</text>
+          </view>
+        </view>
+        <view style='display: flex;flex-direction: row;align-items: center;justify-content: center;'>
+          <view class='harp-line'></view>
+        </view>
+        <view class='task-item'>
+          <view class='item-text'>
+            <text>任务剩余</text>
+          </view>
+          <view class='item-value'>
+            <text>{{item.remainTime?item.remainTime:'--'}}</text>
+          </view>
+        </view>
+      </view>
+      <view hidden="{{item.hiddenFlag==true || item.hiddenFlag==false ?item.hiddenFlag:true}}">
+        <view class='t-run-time'>
+          <view class='task-item'>
+            <view class='item-text'>
+              <text>创建人</text>
+            </view>
+            <view class='item-value'>
+              <text>{{item.realName}}</text>
+            </view>
+          </view>
+          <view style='display: flex;flex-direction: row;align-items: center;justify-content: center;'>
+            <view class='harp-line'></view>
+          </view>
+          <view class='task-item'>
+            <view class='item-text'>
+              <text>经办人</text>
+            </view>
+            <view class='item-value'>
+              <text>{{item.handlerName}}</text>
+            </view>
+          </view>
+        </view>
+        <view class='t-run-owner'>
+          <view class='task-item'>
+            <text>创建时间</text>
+          </view>
+          <view style='width:100%;' class='task-item'>
+            <text>{{item.create_time}}</text>
+          </view>
+        </view>
+        <view class='t-run-owner'>
+          <view class='task-item'>
+            <text>启动时间</text>
+          </view>
+          <view style='width:100%;' class='task-item'>
+            <text>{{item.startTime}}</text>
+          </view>
+        </view>
+      </view>
+      <view class='t-task-opt'>
+        <view class='opt-item l-btn' data-index='{{index}}' bindtap='stopTask'>
+          <text>撤 销</text>
+        </view>
+        <view style='display: flex;flex-direction: row;align-items: center;justify-content: center;'>
+          <view class='harp-line'></view>
+        </view>
+        <view class='opt-item r-btn' data-index='{{index}}' bindtap='doneTask'>
+          <text>完 成</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+<!-- 已完成模板 -->
+<template name="done-task">
+  <view class='done-continer'>
+    <view class='done-box'>
+      <view class='t-done-title'  >
+        <view class='title-level'>
+          <text>{{item.levelText}}</text>
+        </view>
+        <view class='title-taskName' data-index='{{index}}' bindtap='navigateToDetail'>
+          <text>{{item.taskName}}</text>
+        </view>
+        <view class='title-bracket' data-index='{{index}}' data-bracket="{{item.bracket?item.bracket:'down'}}" bindtap='bracketClick'>
+          <image class='bk-image' src="../images/{{item.bracket?item.bracket:'down'}}.png"></image>
+        </view>
+      </view>
+      <view class='t-done-info' >
+        <text>{{item.taskDescribe}}</text>
+      </view>
+      <view hidden="{{item.hiddenFlag==true || item.hiddenFlag==false ?item.hiddenFlag:true}}">
+        <view class='t-done-time'>
+          <view class='task-item'>
+            <view class='item-text'>
+              <text>启动时间</text>
+            </view>
+            <view class='item-value'>
+              <text>{{item.startTime}}</text>
+            </view>
+          </view>
+          <view style='display: flex;flex-direction: row;align-items: center;justify-content: center;'>
+            <view class='harp-line'></view>
+          </view>
+          <view class='task-item'>
+            <view class='item-text'>
+              <text>完成时间</text>
+            </view>
+            <view class='item-value'>
+              <text>{{item.endTime}}</text>
+            </view>
+          </view>
+        </view>
+        <view class='t-done-time'>
+          <view class='task-item'>
+            <view class='item-text'>
+              <text>任务计划</text>
+            </view>
+            <view class='item-value'>
+              <text>{{item.planEndTime}}</text>
+            </view>
+          </view>
+          <view style='display: flex;flex-direction: row;align-items: center;justify-content: center;'>
+            <view class='harp-line'></view>
+          </view>
+          <view class='task-item'>
+            <view class='item-text'>
+              <text>任务质量</text>
+            </view>
+            <view class='item-value'>
+              <text>{{item.endTime<=item.planEndTime?"提前完成":"超时完成"}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='t-done-owner'>
+        <view class='task-item'>
+          <text>任务执行人</text>
+        </view>
+        <view class='task-item'>
+          <text>{{item.handlerName}}</text>
+        </view>
+      </view>
+      <view class='t-done-opt'>
+        <view class='opt-item' data-index='{{index}}' bindtap='navigateToDetail'>
+          <text>任务详情</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

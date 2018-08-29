@@ -1,0 +1,235 @@
+/* pages/template/task.wxss */
+
+/*****待办任务模板css****/
+
+.todo-continer {
+  width: 98%;
+  border-radius: 10px;
+  margin: 10px auto;
+}
+
+.todo-box {
+  background: #fff;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.t-task-title {
+  min-height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: #ccc 1px solid;
+}
+
+.title-level {
+  width: 15%;
+  height: 100%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.title-level>text {
+  border: #ccc 1px solid;
+  padding: 10rpx 20rpx;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.title-taskName {
+  width: 75%;
+  height: 100%;
+  justify-content: flex-start;
+  display: flex;
+  align-items: center;
+  padding-left: 5rpx;
+}
+
+.title-bracket {
+  height: 100%;
+  width: 10%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.bk-image {
+  height: 25px;
+  width: 25px;
+}
+
+.t-task-info {
+  padding-left: 5rpx;
+  min-height: 60px;
+  border-bottom: #ccc 1px solid;
+}
+
+.t-task-time {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  min-height: 80px;
+  border-bottom: #ccc 1px solid;
+}
+
+.task-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 49%;
+}
+
+.item-text {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  height: 30%;
+}
+
+.item-value {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  font-size: 15px;
+  height: 70%;
+}
+
+.harp-line {
+  height: 90%;
+  width: 1px;
+  background: #ccc;
+}
+
+.t-task-owner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 30%;
+  min-height: 40px;
+  border-bottom: #ccc 1px solid;
+}
+
+.t-task-opt {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 20%;
+  min-height: 50px;
+}
+
+.opt-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.l-btn {
+  width: 49%;
+}
+
+.r-btn {
+  width: 49%;
+}
+
+/*****进行中任务模板css****/
+
+.run-continer {
+  width: 98%;
+  border-radius: 10px;
+  margin: 10px auto;
+}
+
+.run-box {
+  background: #fff;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.t-run-title {
+  min-height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: #ccc 1px solid;
+}
+
+.t-run-info {
+  padding-left: 5rpx;
+  min-height: 60px;
+  border-bottom: #ccc 1px solid;
+}
+
+.t-run-time {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  min-height: 80px;
+  border-bottom: #ccc 1px solid;
+}
+
+.t-run-owner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 30%;
+  min-height: 40px;
+  border-bottom: #ccc 1px solid;
+}
+
+/*****完成任务模板css****/
+
+.done-continer {
+  width: 98%;
+  border-radius: 10px;
+  margin: 10px auto;
+}
+
+.done-box {
+  background: #fff;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.t-done-title {
+  min-height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: #ccc 1px solid;
+}
+
+.t-done-info {
+  padding-left: 5rpx;
+  min-height: 60px;
+  border-bottom: #ccc 1px solid;
+}
+
+.t-done-time {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  min-height: 80px;
+  border-bottom: #ccc 1px solid;
+}
+
+.t-done-owner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 30%;
+  min-height: 40px;
+  border-bottom: #ccc 1px solid;
+}
+
+.t-done-opt {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  min-height: 50px;
+}

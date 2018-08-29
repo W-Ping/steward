@@ -1,0 +1,21 @@
+<!--pages/daycycle/daycycle.wxml-->
+<scroll-view scroll-y>
+  <block wx:for="{{dayCycleList}}" wx:index="{{index}}" wx:key="{{key}}">
+    <view class='time-box'>
+      <view class="user-info">
+        <image src='https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eo3nBz5NMrYaO6whIrdylZMmhhDNsgeV12eO5rF0USW4umiaPT4bhv0ja8VibArzxP1Mzn4XywZcjmw/132'></image>
+        <view>
+          <text>刘伟平</text>
+        </view>
+      </view>
+      <view class="cycle-time">
+        <view>
+          <text>{{item.recordTime}}</text>
+        </view>
+        <view>
+          <text><text>{{item.timeTypeName}}</text></text>
+        </view>
+      </view>
+    </view>
+  </block>
+</scroll-view>

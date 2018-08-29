@@ -1,0 +1,73 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/addCgi/addCgi",
+    "pages/reset/index",
+    "pages/ready/ready",
+    "pages/working/working",
+    "pages/home/home",
+    "pages/statistic/statistic",
+    "pages/traffic/traffic",
+    "pages/statistic/task",
+    "pages/traffic_detail/traffic_detail",
+    "pages/statistic/setting",
+    "pages/statistic/address",
+    "pages/template/task",
+    "pages/daycycle/daycycle",
+    "pages/working/detail"
+  ],
+  "window": {
+    "backgroundColor": "#f8f8f8",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#00abff",
+    "navigationBarTitleText": "1天管家",
+    "navigationBarTextStyle": "white",
+    "navigationStyle": "defaut"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#000000",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/ready/ready",
+        "iconPath": "images/上班.png",
+        "selectedIconPath": "images/上班.png",
+        "text": "上/下班"
+      },
+      {
+        "pagePath": "pages/traffic/traffic",
+        "iconPath": "images/traffic.png",
+        "selectedIconPath": "images/traffic.png",
+        "text": "路况"
+      },
+      {
+        "pagePath": "pages/working/working",
+        "iconPath": "images/工作.png",
+        "selectedIconPath": "images/工作.png",
+        "text": "工作"
+      },
+      {
+        "pagePath": "pages/statistic/statistic",
+        "iconPath": "images/统计.png",
+        "selectedIconPath": "images/统计.png",
+        "text": "我的"
+      }
+    ],
+    "position": "bottom"
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 60000,
+    "uploadFile": 60000,
+    "downloadFile": 10000
+  },
+  "plugins": {
+    "calendar": {
+      "version": "1.1.3",
+      "provider": "wx92c68dae5a8bb046"
+    }
+  },
+  "debug": true
+}

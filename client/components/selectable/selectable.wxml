@@ -1,0 +1,24 @@
+<!--components/selectable.wxml-->
+<view class='selectable' hidden='{{isHidden}}'>
+  <view class='wx-mask' catchtap='closeSelect'></view>
+  <scroll-view scroll-y class='selectable-box'>
+    <block wx:for="{{selectItems}}" wx:key="{{key}}" wx:index="{{index}}">
+      <view class="selectable-item {{index%2==0?'even':'odd'}}" data-index='{{index}}' catchtap='_selectedItem'>
+        <view class="label-icon">
+          <view class="icon {{item.checked ? 'checked ': ''}}"></view>
+        </view>
+        <view class='label-image'>
+          <image class='image' src='{{item.image}}'></image>
+        </view>
+        <view class='label-text'>
+          <text>{{item.name}}</text>
+        </view>
+      </view>
+    </block>
+    <block wx:if="{{selectItems.length<=0}}">
+      <view class='default-selectable'>
+        <text>什么都没有~~~</text>
+      </view>
+    </block>
+  </scroll-view>
+</view>

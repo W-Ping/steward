@@ -1,0 +1,9 @@
+<!--components/textable/textable.wxml-->
+<view class='textable' class='textable-class' catchtap='_clickEvent'>
+  <block wx:if="{{value}}">
+    <text class='{{textClass}}'>{{value}}</text>
+  </block>
+  <block wx:if="{{!value}}">
+    <text style="color:#8b8b8b;">{{placeholder}}</text>
+  </block>
+</view>

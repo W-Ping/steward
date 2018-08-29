@@ -1,0 +1,15 @@
+<!--pages/index/index.wxml-->
+<view class='login-box' wx:if="{{!logged}}">
+  <button class="userinfo-nickname" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">登录</button>
+    <button bindtap='workday'  style='background:green;' class="userinfo-nickname">免登录</button>
+</view>
+<block wx:if="{{logged}}">
+  <view class='guide-page'>
+    <!-- <view  bindtap='restDay' class='guid-box restDay'>
+    休息日
+  </view> -->
+    <view bindtap='workday' class='guid-box workday'>
+      工作日
+    </view>
+  </view>
+</block>

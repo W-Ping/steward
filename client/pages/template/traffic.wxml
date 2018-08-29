@@ -1,0 +1,81 @@
+<!--pages/template/traffic.wxml-->
+<template name="traffic">
+  <view class='route-c'>
+    <view class='route-box'>
+      <view class='input-view'>
+        <view class='route-input start'>
+          <image src='' style='width:32px;height:24px'></image>
+          <input placeholder="我的位置" data-lotType='0' value='{{originName}}' bindfocus='bindfocus'></input>
+        </view>
+        <view class='line'></view>
+        <view class='route-input end'>
+          <image src='' style='width:32px;height:24px'></image>
+          <input placeholder='输入终点' data-lotType='1' adjust-position="{{false}}" value="{{destinationName}}" bindfocus='bindfocus'></input>
+        </view>
+      </view>
+      <view class='input-view'>
+        <image src='' style='width:32px;height:24px'></image>
+      </view>
+      <view class='input-view'>
+        <view class="btn" style=' background: #00abff;' bindtap='search'>
+          <text>查询</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='strategy-box'>
+    <scroll-view scroll-x class='s-scroll'>
+      <view class="s-item {{strategy=='0'?'selected':''}}" data-strategy='0' bindtap='swichStrategy'>公交</view>
+      <view class="s-item {{strategy=='1'?'selected':''}}" data-strategy='1' bindtap='swichStrategy'>自驾</view>
+      <view class="s-item {{strategy=='2'?'selected':''}}" data-strategy='2' bindtap='swichStrategy'>骑行</view>
+      <view class="s-item {{strategy=='3'?'selected':''}}" data-strategy='3' bindtap='swichStrategy'>步行</view>
+    </scroll-view>
+  </view>
+  <view class='map-box'>
+    <map id="navi_map" show-location="{{true}}" longitude="{{longitude}}" latitude="{{latitude}}" scale="{{scale}}" markers="{{markers}}" polyline="{{polyline}}">
+      <cover-view class='scale'>
+        <cover-view class='scale-box' data-scale='{{scale}}' data-scaleType='1' bindtap='clickScale'>+</cover-view>
+        <cover-view class='line' style='border-bottom: #ccc 1px solid;'></cover-view>
+        <cover-view class='scale-box' data-scale='{{scale}}' data-scaleType='-1' bindtap='clickScale'>-</cover-view>
+      </cover-view>
+    </map>
+  </view>
+  <view class='result-box'>
+    <scroll-view scroll-x class='r-scroll'>
+      <!-- 公交策略 -->
+      <block wx:if="{{strategy==0}}" wx:for="{{transitStrategy}}" wx:for-item="item" wx:key="key" wx:index="{{index}}">
+        <view class='r-item' data-strategyType='{{item.strategy}}' bindtap='selectedStrategy'>
+          <view>
+            <text>方案{{index+1}}</text>
+          </view>
+          <view>
+            <text class='txt'>{{item.strategyName}}</text>
+          </view>
+        </view>
+      </block>
+      <!-- 自驾策略 -->
+      <block wx:if="{{strategy==1}}" wx:for="{{drivingStrategy}}" wx:for-item="item" wx:key="key" wx:index="{{index}}">
+        <view class='r-item' data-strategyType='{{item.strategy}}' bindtap='selectedStrategy'>
+          <view>
+            <text>方案{{index+1}}</text>
+          </view>
+          <view class='txt'>
+            <text wx:for="{{item.strategyName}}" wx:for-item='i' wx:key="uq">{{i}}</text>
+          </view>
+        </view>
+      </block>
+      <!-- 骑行 -->
+      <block wx:if="{{strategy==2}}">
+        <view class='r-item other' bindtap='selectedStrategy'>
+          <text>骑行方案</text>
+        </view>
+      </block>
+      <!-- 步行 -->
+      <block wx:if="{{strategy==3}}">
+        <view class='r-item other' bindtap='selectedStrategy'>
+          <text>步行方案</text>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+</template>

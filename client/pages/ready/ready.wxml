@@ -1,0 +1,133 @@
+<view class='head-box' style="height:40px;line-height: 40px;">
+  <view bindtap='swichTab' data-currentTab='0' class="head-item left {{currentTab=='0'?'active':''}}">上 班</view>
+  <view bindtap='swichTab' data-currentTab='1' class="head-item right {{currentTab=='1'?'active':''}}">下 班</view>
+</view>
+<view class='body-box' style="height:{{winHeight-120}}px;">
+  <swiper class='swiper-box' current-item-id="{{currentTab}}" bindchange="bindchange">
+    <swiper-item item-id="0">
+      <scroll-view scroll-y style='height:100%;'>
+        <view class='task-box weather'>
+          <scroll-view scroll-y class='task-scroll weather-scroll'>
+            <view>
+              <text>{{''+weatherData.liveData.city+'~'+weatherData.liveData.weather+'~'+weatherData.liveData.temperature+'℃'+'~'+weatherData.liveData.windpower+'级'+weatherData.liveData.winddirection+'风'}}</text>
+            </view>
+          </scroll-view>
+        </view>
+        <view class='task-box'>
+          <view class='task-declare'>
+            <text>最新消息</text>
+          </view>
+          <scroll-view scroll-y class='task-scroll'>
+            <view>
+              最新消息1
+            </view>
+          </scroll-view>
+        </view>
+        <view class='task-box'>
+          <view class='task-declare'>
+            <text>最新消息2</text>
+          </view>
+          <scroll-view scroll-y class='task-scroll'>
+            <view>
+              最新消息2
+            </view>
+          </scroll-view>
+        </view>
+        <view class='task-box'>
+          <view class='task-declare'>
+            <text>最新消息3</text>
+          </view>
+          <scroll-view scroll-y class='task-scroll'>
+            <view>
+              最新消息3
+            </view>
+          </scroll-view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+    <swiper-item item-id="1">
+      <scroll-view scroll-y style='height:100%;'>
+        <view class='task-box'>
+          <view class='task-declare'>
+            <text>最新消息1</text>
+          </view>
+          <scroll-view scroll-y class='task-scroll'>
+            <view>
+              最新消息1
+            </view>
+          </scroll-view>
+        </view>
+        <view class='task-box'>
+          <view class='task-declare'>
+            <text>最新消息2</text>
+          </view>
+          <scroll-view scroll-y class='task-scroll'>
+            <view>
+              最新消息2
+            </view>
+          </scroll-view>
+        </view>
+        <view class='task-box'>
+          <view class='task-declare'>
+            <text>最新消息3</text>
+          </view>
+          <scroll-view scroll-y class='task-scroll'>
+            <view>
+              最新消息3
+            </view>
+          </scroll-view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+  </swiper>
+</view>
+<view class='bottom-box' style="height:80px;">
+  <block wx:if="{{currentTab==0}}">
+    <view class='clock-box'>
+      <view class='clock-in'>
+        <text>XXX</text>
+      </view>
+      <view class='btn wakeUp' bindtap='wakeUp'>
+        <text>早起</text>
+      </view>
+      <view class='clock-dec'>
+        <text>{{'(早起时间 '+wakeUpTimeConfig['min']+'~'+wakeUpTimeConfig['max']+')'}}</text>
+      </view>
+    </view>
+    <view class='clock-box'>
+      <view class='clock-in'>
+        <text>XXX</text>
+      </view>
+      <view class='btn' bindtap='attendance'>
+        <text>上班打卡</text>
+      </view>
+      <view class='clock-dec'>
+        <text>{{'(打卡时间 '+attendanceTimeConfig['min']+'~'+attendanceTimeConfig['max']+')'}}</text>
+      </view>
+    </view>
+  </block>
+  <block wx:if="{{currentTab==1}}">
+    <view class='clock-box'>
+      <view class='clock-in'>
+        <text>XXX</text>
+      </view>
+      <view class='btn' bindtap='sleep'>
+        <text>睡觉</text>
+      </view>
+      <view class='clock-dec'>
+        <text>{{'(睡觉时间 '+sleepTimeConfig['min']+'~'+sleepTimeConfig['max']+')'}}</text>
+      </view>
+    </view>
+    <view class='clock-box'>
+      <view class='clock-in'>
+        <text>XXX</text>
+      </view>
+      <view class='btn' bindtap='offWork'>
+        <text>下班打卡</text>
+      </view>
+      <view class='clock-dec'>
+       <text>{{'(打卡时间 '+offWorkTimeConfig['min']+'~'+offWorkTimeConfig['max']+')'}}</text>
+      </view>
+    </view>
+  </block>
+</view>

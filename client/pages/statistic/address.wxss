@@ -1,0 +1,25 @@
+/* pages/statistic/address.wxss */
+
+.address-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  border-bottom: #ccc 1px solid;
+  margin: 10px;
+  align-items: center;
+}
+
+text {
+  width: 90%;
+  padding: 10rpx 0rpx 10rpx 0rpx;
+}
+
+textarea {
+  width: 90%;
+  height: 80px;
+}
+
+image {
+  width: 23px;
+  height: 23px;
+}

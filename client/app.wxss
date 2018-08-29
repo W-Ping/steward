@@ -1,0 +1,57 @@
+/**app.wxss**/
+@import "./pages/template/traffic.wxss";
+
+page {
+  /* background-color: #efefef; */
+  background-color: #f8f8f8;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.btn {
+  display: flex;
+  width: 80px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 10px;
+  border: #fff 1px solid;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  background: #1aad19;
+}
+
+.round-view {
+  border-radius: 50%;
+  background: #00abff !important;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 800;
+  color: #fff;
+}
+
+.marquee {
+  display: block;
+  width: 100%;
+  height: 60rpx;
+}
+
+.marquee_box {
+  width: 100%;
+  position: relative;
+}
+
+.marquee_text {
+  /* background: red; */
+  white-space: nowrap;
+  position: absolute;
+  top: 0;
+}

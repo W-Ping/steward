@@ -1,0 +1,70 @@
+<view class='flex-tab' style="height:40px">
+  <view bindtap='swichTab' data-currentTab='0' class="flex-tab-item {{currentTab=='0'?'active':''}}">新增</view>
+  <view bindtap='swichTab' data-currentTab='1' class="flex-tab-item {{currentTab=='1'?'active':''}}">待办</view>
+  <view bindtap='swichTab' data-currentTab='2' class="flex-tab-item {{currentTab=='2'?'active':''}}">进行中</view>
+  <view bindtap='swichTab' data-currentTab='3' class="flex-tab-item {{currentTab=='3'?'active':''}}">已完成</view>
+</view>
+<scroll-view scroll-y class='task-box'>
+  <block wx:if="{{currentTab=='0'}}">
+    <form bindsubmit="taskSubmit" bindreset="formReset">
+      <view class='task-add'>
+        <view class='add-item'>
+          <label>任务名称</label>
+          <input placeholder='任务名称' name="taskName" value="{{taskName}}" focus='{{true}}'></input>
+        </view>
+        <view class='add-item'>
+          <label>预估时间(小时)</label>
+          <input placeholder='计划时间（小时）' type="digit" name="planHour" value="{{planHour}}"></input>
+        </view>
+        <view class='add-item'>
+          <label>任务级别</label>
+          <radio-group class="group" name="level" bindchange="radioChange">
+            <view class="label" wx:for="{{radioItems}}" wx:key="{{key}}">
+              <radio id="{{item.name}}" hidden value="{{item.value}}" checked="{{item.checked}}"></radio>
+              <view class="label-icon">
+                <view class="icon {{item.checked ? 'checked ': ''}}"></view>
+              </view>
+              <label class="label-text" for="{{item.name}}">
+                <text>{{item.name}}</text>
+              </label>
+            </view>
+          </radio-group>
+        </view>
+        <view class='add-item'>
+          <label>描述</label>
+          <textarea name="taskDescribe" value="{{taskDescribe}}" placeholder='任务内容'></textarea>
+        </view>
+        <view style='width:90%;margin:10px auto;'>
+          <button form-type='submit' type="primary">保 存</button>
+        </view>
+      </view>
+    </form>
+  </block>
+  <block wx:if="{{currentTab=='1'}}">
+    <block wx:if="{{haveData}}">
+      <import src="../template/task.wxml" />
+      <template is="todo-task" wx:for="{{taskList}}" wx:index="index" wx:key="key" data="{{item,index}}" />
+    </block>
+    <block wx:if="{{!haveData}}">
+      <view style='background:red;display:flex;justify-content:center;top:50%;bottom:50%;left:0;right:0;position:fixed;color:#fff;font-size:25px;font-weight:bold;'>暂无待办的任务~~~</view>
+    </block>
+  </block>
+  <block wx:if="{{currentTab=='2'}}">
+    <block wx:if="{{haveData}}">
+      <import src="../template/task.wxml" />
+      <template is="run-task" wx:for="{{taskList}}" wx:index="index" wx:key="key" data="{{item,index}}" />
+    </block>
+    <block wx:if="{{!haveData}}">
+      <view style='background:red;display:flex;justify-content:center;top:50%;bottom:50%;left:0;right:0;position:fixed;color:#fff;font-size:25px;font-weight:bold;'>暂无进行中的任务~~~</view>
+    </block>
+  </block>
+  <block wx:if="{{currentTab=='3'}}">
+    <block wx:if="{{haveData}}">
+      <import src="../template/task.wxml" />
+      <template is="done-task" wx:for="{{taskList}}" wx:index="index" wx:key="key" data="{{item,index}}" />
+    </block>
+    <block wx:if="{{!haveData}}">
+      <view style='background:red;display:flex;justify-content:center;top:50%;bottom:50%;left:0;right:0;position:fixed;color:#fff;font-size:25px;font-weight:bold;'>暂无已完成任务~~~</view>
+    </block>
+  </block>
+</scroll-view>

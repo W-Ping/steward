@@ -1,0 +1,4 @@
+/* components/textable/textable.wxss */
+.textable{
+  border-bottom: #ccc 1px solid;
+}

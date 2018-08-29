@@ -1,0 +1,112 @@
+/* pages/working/detail.wxss */
+
+.continer {
+  width: 95%;
+  margin: 0 auto;
+  right: 0;
+  left: 0;
+}
+
+.task-add {
+  width: 98%;
+  margin: 50px auto;
+  text-align: center;
+  border: #ccc 1px solid;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.add-item {
+  margin: 10px auto;
+  width: inherit;
+  display: flex;
+  flex-direction: row;
+}
+
+.add-item> view:nth-child(1) {
+  padding-right: 10rpx;
+  text-align: right;
+  width: 25%;
+  font-size: 14px;
+}
+
+textarea {
+  border: #ccc 1px solid;
+  width: 99%;
+}
+
+.add-item>view:nth-child(2) {
+  text-align: left;
+  width: 100%;
+  border-bottom: #ccc 1px solid;
+}
+
+radio-group {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.label-icon {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+  width: 18px;
+  height: 18px;
+  background: #fcfff4;
+  border-radius: 50px;
+}
+
+.icon {
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 12px;
+  height: 12px;
+  background: #ccc;
+  border-radius: 50%;
+}
+
+.checked {
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 12px;
+  height: 12px;
+  background: #1aad19;
+  border-radius: 50%;
+}
+
+.label-text {
+  /* color: red; */
+  font-size: 18px;
+}
+
+.textable {
+  font-size: 15px;
+  border: #ccc 1px solid;
+  width: 80px;
+}
+
+.handler {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.handler-text {
+  border-bottom: #ccc 1px solid;
+  width: 60%;
+}
+
+.handler-btn {
+  display: flex;
+  width: 30%;
+  border: #ccc 1px solid;
+  font-size: 14px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10rpx;
+}
+

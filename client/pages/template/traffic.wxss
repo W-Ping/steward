@@ -1,0 +1,140 @@
+page {
+  height: 100%;
+}
+
+.route-c {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20%;
+  border-bottom: #ccc 1px solid;
+}
+
+.route-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 90%;
+  /* background: rgb(245, 245, 245); */
+  border-radius: 10px;
+}
+
+.input-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+}
+
+.route-input {
+  display: flex;
+  flex-direction: row;
+}
+
+.line {
+  margin: 5px 0px 5px 0px;
+  width: 100%;
+  border-bottom: #00abff 1px solid;
+  height: 0.5rpx;
+}
+
+.strategy-box {
+  width: 100%;
+  height: 40px;
+    /* height: 10%; */
+}
+
+.s-scroll {
+  width: 100%;
+  white-space: nowrap;
+}
+
+.s-item {
+  display: inline-block;
+  width: 25%;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  margin: 0 auto;
+}
+
+.selected {
+  background: #00abff;
+  color: #fff;
+}
+
+.map-box {
+  height: 52%;
+  width: 100%;
+}
+
+map {
+  width: 100%;
+  height: 100%;
+}
+
+.result-box {
+  position: fixed;
+  bottom: 5px;
+  width: 100%;
+  /* height: 120px; */
+  white-space: nowrap;
+}
+
+.r-item {
+  display: inline-block;
+  height: 100px;
+  width: 100px;
+  text-align: center;
+  /* line-height: 100px; */
+  background: #00abff;
+  margin: 0rpx 10rpx 0rpx 10rpx;
+}
+
+.r-item>view:nth-child(1) {
+  font-size: 13px;
+  color: #fff;
+  height: 40px;
+  line-height: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.r-item>view:nth-child(2) {
+  color: #fff;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* line-height: 60px; */
+}
+
+.other {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  width: 90%;
+  margin: 0 auto;
+}
+.scale {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  right: 5px;
+  top: 50%;
+}
+
+.scale-box {
+  color: #000;
+  font: 14px;
+  font-weight: 700;
+  background: #fff;
+  height: 30px;
+  width: 30px;
+  text-align: center;
+  line-height: 30px;
+}

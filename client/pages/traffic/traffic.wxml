@@ -1,0 +1,3 @@
+<!--pages/traffic/traffic.wxml-->
+<import src="../template/traffic.wxml" />
+<template is="traffic" data="{{originName,destinationName,strategy,scale,longitude,latitude,markers,polyline,transitStrategy,drivingStrategy}}" />

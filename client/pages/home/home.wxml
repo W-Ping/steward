@@ -1,0 +1,108 @@
+<!--pages/home/home.wxml-->
+<view class='container' style="height:{{winHeight}}px">
+  <view class='flex-tab' style="height:40px">
+    <view bindtap='swichTab' data-currentTab='0' class="flex-tab-list left {{currentTab=='0'?'active':''}}">下 班</view>
+    <view bindtap='swichTab' data-currentTab='1' class="flex-tab-list right {{currentTab=='1'?'active':''}}">路 况</view>
+  </view>
+  <view class="flex-box" style="height:{{winHeight-40}}px">
+    <block wx:if="{{currentTab==0}}">
+      <view class="flex-item work">
+        <view class='work-item'>
+          <view class='tips-weather'>
+            <view class='weather-text'>
+              <view>{{weatherData.city.text}}</view>
+              <view>{{weatherData.weather.text}}</view>
+              <view>{{weatherData.windpower.text}}</view>
+              <view>{{weatherData.temperature.text}}</view>
+              <view>{{weatherData.winddirection.text}}</view>
+            </view>
+            <view class='weather-split'>
+              <view space="nbsp"> : </view>
+              <view space="nbsp"> : </view>
+              <view space="nbsp"> : </view>
+              <view space="nbsp"> : </view>
+              <view space="nbsp"> : </view>
+            </view>
+            <view class='weather-data'>
+              <view>{{weatherData.city.data}}</view>
+              <view>{{weatherData.weather.data}}</view>
+              <view>{{weatherData.windpower.data}}</view>
+              <view>{{weatherData.temperature.data}}</view>
+              <view>{{weatherData.winddirection.data}}</view>
+            </view>
+          </view>
+        </view>
+        <view class='work-item'>
+          <view class='item'>
+            <image src='../images/早餐.png'></image>
+            <input type='digit' placeholder="我的晚餐费~"></input>
+          </view>
+          <view class='item'>
+            <image src='../images/交通.png'></image>
+            <input type='digit' placeholder="我的交通费~"></input>
+          </view>
+          <view class='item'>
+            <image src='../images/其他.png'></image>
+            <input type='digit' placeholder="其他费用~"></input>
+          </view>
+          <view class='bottom-box'>
+            <view class='btn'>
+              <text>确定</text>
+            </view>
+          </view>
+        </view>
+        <view class='work-item record'>
+          <view class='record-item'>
+            <view class='record-text'>
+              <text>{{punchOutTime}}</text>
+            </view>
+            <view class='btn punchOut' bindtap='punchOut'>
+              <text>下班打卡</text>
+            </view>
+          </view>
+          <view class='record-item'>
+            <view class='record-text'>
+              <text>{{sleepTime}}</text>
+            </view>
+            <view class='btn sleep' bindtap='sleep'>
+              <text>睡觉</text>
+            </view>
+          </view>
+
+        </view>
+      </view>
+
+    </block>
+    <block wx:if="{{currentTab==1}}">
+      <view class="flex-item map">
+        <map id="navi-map" longitude="{{startLocation.longitude}}" latitude="{{startLocation.latitude}}" scale="{{scale}}" markers="{{trafficInfo.markers}}" bindmarkertap="bindmarkertap" polyline="{{trafficInfo.polyline}}">
+          <!-- <cover-view bindtap='getCenterLocation' class='mylocaltion'>
+            我的位置
+          </cover-view> -->
+          <cover-view class='scale'>
+            <cover-view class='scale-box' data-scale='{{scale}}' data-scaleType='1' bindtap='clickScale'>+</cover-view>
+            <cover-view class='line'></cover-view>
+            <cover-view class='scale-box' data-scale='{{scale}}' data-scaleType='-1' bindtap='clickScale'>-</cover-view>
+          </cover-view>
+          <cover-view class='navigation'>
+            <cover-view class='navigation-box'>
+              <cover-view class='navigation-list nearby' catchtap='nearbyClick'>
+                <cover-image src=''>
+                </cover-image>
+                <cover-view>发现附近</cover-view>
+              </cover-view>
+              <cover-view class='navigation-list route' catchtap='routeClick'>
+                <cover-image src=''></cover-image>
+                <cover-view>线路</cover-view>
+              </cover-view>
+              <cover-view class='navigation-list newRoute' catchtap='newRouteClick'>
+                <cover-image src=''></cover-image>
+                <cover-view>添加路径</cover-view>
+              </cover-view>
+            </cover-view>
+          </cover-view>
+        </map>
+      </view>
+    </block>
+  </view>
+</view>

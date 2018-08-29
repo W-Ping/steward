@@ -1,0 +1,69 @@
+<!--pages/traffic_detail/traffic_detail.wxml-->
+<view class='tfc-header' style="height:30px;">
+  <view>
+    <block wx:if="{{strategy==0}}">
+      <text>公交</text>
+    </block>
+    <block wx:if="{{strategy==1}}">
+      <text>自驾</text>
+    </block>
+    <block wx:if="{{strategy==2}}">
+      <text>骑行</text>
+    </block>
+    <block wx:if="{{strategy==3}}">
+      <text>步行</text>
+    </block>
+  </view>
+</view>
+<view animation="{{animationData}}" style="height:{{winHeight*0.5-30}}px;">
+  <map show-location="{{true}}" scale="{{scale}}" longitude="{{longitude}}" latitude="{{latitude}}" markers="{{markers}}" polyline="{{polyline}}">
+    <cover-view class='scale' animation="{{animationData}}" style='right:5px;'>
+      <cover-view class='scale-box' data-scale='{{scale}}' data-scaleType='1' bindtap='clickScale'>+</cover-view>
+      <cover-view class='line1' style='width: 80%; height: 0px;border: #ccc 0.5px solid;'></cover-view>
+      <cover-view class='scale-box' data-scale='{{scale}}' data-scaleType='-1' bindtap='clickScale'>-</cover-view>
+    </cover-view>
+  </map>
+</view>
+<view bindtap="bindtap" data-mapScale='{{map_scale}}' data-mapHeight='{{winHeight*0.5-30}}' style=';border-bottom: #ccc 0.5px solid;text-align:center;font-size:13px;color:#00abff;font-weight:700;padding:10rpx;0rpx;'>
+  {{map_scale?'点击上拉':'点击下拉'}}
+</view>
+<view class='tfc-digest'>
+  <view>
+    距离:
+    <text class='distance'>{{distance}}</text> 米
+  </view>
+  <view wx:if="{{strategy==0 || strategy==1}}">
+    打车费大约:
+    <text class='cost'>{{taxi_cost}}</text> 元
+  </view>
+  <view wx:else>
+    预计时间:
+    <text class='cost'>{{duration}}</text> 分钟
+  </view>
+</view>
+<view>
+  <!-- <view class='tfc-detail' > -->
+  <scroll-view scroll-y class='detail-scroll1'>
+    <block wx:if="{{strategy==0}}">
+      <view class="text_box" wx:for="{{transits}}" wx:for-item="item" wx:key="key">
+        <text class="text_item" wx:for="{{item.transport}}" wx:for-item="j" wx:key="uk">{{j}}</text>
+      </view>
+    </block>
+    <block wx:if="{{strategy==1}}">
+      <view class="text_box" wx:for="{{steps}}" wx:for-item="i" wx:key="key">
+        {{i.instruction}}
+      </view>
+    </block>
+    <block wx:if="{{strategy==2}}">
+      <view class="text_box" wx:for="{{steps}}" wx:for-item="i" wx:key="key">
+        {{i.instruction}}
+      </view>
+    </block>
+    <block wx:if="{{strategy==3}}">
+      <view class="text_box" wx:for="{{steps}}" wx:for-item="i" wx:key="key">
+        {{i.instruction}}
+      </view>
+    </block>
+  </scroll-view>
+  <!-- </view> -->
+</view>

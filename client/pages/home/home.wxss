@@ -1,0 +1,222 @@
+/* pages/home/home.wxss */
+
+.flex-tab {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  top: 0;
+  background: #00abff;
+}
+
+.flex-tab-list {
+  width: 30%;
+  color: #fff;
+  font-size: 20px;
+  background: #ccc;
+  line-height: 40px;
+  text-align: center;
+}
+
+.left {
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+
+.right {
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+.active {
+  background: rgba(0, 128, 0, 0.349);
+}
+
+.flex-box {
+  position: fixed;
+  top: 40px;
+  height: 100%;
+  width: 100%;
+}
+
+.work {
+  height: 100%;
+  background: #fff;
+}
+
+.work-tips {
+  border: #ccc 1px solid;
+  border-radius: 10px;
+  margin: 10px 10px;
+}
+
+.tips-weather {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font: 13px;
+  /* background: #0cd1df; */
+}
+
+.weather-split {
+  margin: 0px 8px 0px 8px;
+}
+
+.work-item {
+  margin: 10px 10px;
+  padding: 20px;
+  border: #ccc 1px solid;
+  border-radius: 10px;
+  /* background: #00abff; */
+}
+
+.work-item > .item {
+  display: flex;
+  flex-direction: row;
+  border-bottom: #ccc 1px solid;
+  align-items: flex-end;
+  margin-bottom: 15px;
+}
+
+.item image {
+  height: 30px;
+  width: 30px;
+}
+
+.item input {
+  padding-left: 20rpx;
+}
+
+.bottom-box {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.record {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.record-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+}
+
+.record-text {
+  height: 50%;
+}
+
+.sleep {
+  width: 50%;
+}
+
+.punchOut {
+  width: 50%;
+  background: #00abff;
+}
+
+/*************************路况css**************************/
+
+.map {
+  width: 100%;
+  height: 100%;
+}
+
+#navi-map {
+  width: 100%;
+  height: 100%;
+}
+
+.navigation {
+  display: flex;
+  position: fixed;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+}
+
+.navigation-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  border-radius: 21px;
+  height: 42x;
+  width: 60%;
+}
+
+.navigation-list {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: #fff 1px solid;
+  font-size: 13px;
+  height: 30px;
+  padding: 0px 10px 10px 10px;
+}
+
+.navigation-list cover-image {
+  width: 32px;
+  height: 15px;
+}
+
+.nearby {
+  width: 32%;
+  border-top-left-radius: 21px;
+  border-bottom-left-radius: 21px;
+}
+
+.route {
+  font: 14px;
+  color: #fff;
+  border-radius: 21px;
+  width: 36%;
+  background: #00abff;
+}
+
+.newRoute {
+  width: 32%;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.scale {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  right: 5px;
+  top: 50%;
+}
+
+.line {
+  height: 0.5px;
+  width: 80%;
+  border: #ccc 0.5px solid;
+}
+
+.scale-box {
+  color: #000;
+  font: 14px;
+  font-weight: 700;
+  background: #fff;
+  height: 30px;
+  width: 30px;
+  text-align: center;
+  line-height: 30px;
+}

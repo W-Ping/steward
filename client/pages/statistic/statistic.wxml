@@ -1,0 +1,47 @@
+<!--pages/statistic/statistic.wxml-->
+<view class='my-container'>
+  <view class='avatar-box'>
+      <image  class="my-avatar" src="{{userinfo.avatarUrl}}" mode="cover"></image>
+  </view>
+  <view class='info-box'>
+    <view>
+      <text>{{userinfo.nickName}}</text>
+    </view>
+    <view>
+      <text style='font-size:15px;color:#ccc;'>{{userinfo.company_name?userinfo.company_name:'没有公司信息'}}</text>
+    </view>
+  </view>
+  <view class='setting-box' bindtap='setting' data-uid='{{userinfo.uid}}'>
+    <text>编辑</text>
+    <text space="nbsp"> ></text>
+  </view>
+</view>
+<view class="calendar-box">
+  <calendar lunar="{{true}}" days-color="{{days_style}}" show-more-days="{{false}}" cell-size="40" calendar-style="calendar" active-type="rounded" header-style="header" board-style="board" weeks-type="cn" bindnextMonth="next" bindprevMonth="prev" binddateChange="dateChange"
+    binddayClick="dayClick" />
+</view>
+<view class='tips-box '>
+  <view class='v-tip warn ' bindtap='overtime'>
+    <text>加班</text>
+  </view>
+  <view class='v-tip normal ' bindtap='rest'>
+    <text>休息</text>
+  </view>
+  <view class='v-tip work ' bindtap='work'>
+    <text>工作</text>
+  </view>
+</view>
+<view class='message-box '>
+  <view>
+    <text>加班总计：</text>
+    <text>{{overtimeSum}} 小时</text>
+  </view>
+  <view>
+    <text>休息总计：</text>
+    <text>{{restSum}} 天</text>
+  </view>
+  <view>
+    <text>工作总计：</text>
+    <text>{{workSum}} 天</text>
+  </view>
+</view>

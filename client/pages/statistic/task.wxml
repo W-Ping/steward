@@ -1,0 +1,17 @@
+<!--pages/statistic/task.wxml-->
+<view class='d-box'>
+  <text>{{date}}</text>
+</view>
+<view class='t-box'>
+  <view>
+    <text>上班时间：</text>
+    <text>{{workTime}}</text>
+  </view>
+  <view>
+    <text>下班时间：</text>
+    <text>{{punchOutTime}}</text>
+  </view>
+</view>
+<view class='task-box'>
+  <view></view>
+</view>

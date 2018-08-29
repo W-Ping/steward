@@ -1,0 +1,43 @@
+/* pages/daycycle/daycycle.wxss */
+
+page {
+  margin: 0 auto;
+}
+
+.time-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin: 20rpx auto;
+  height: 80px;
+  border: #000 2px solid;
+  width: 90%;
+  border-radius: 10px;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.user-info >image {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.cycle-time {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 16px;
+}
+
+.cycle-time>view {
+  margin: 0px 10px;
+}
