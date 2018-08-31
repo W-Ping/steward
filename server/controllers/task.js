@@ -161,7 +161,7 @@ async function preUpdateTask(reqinfo, taksInfo) {
         taksInfo.assignTime = dateUtil.nowTime();
         taksInfo.stat = 3;
         taksInfo.handlerName = reqinfo.handlerName;
-        //新增 inkman
+        //新增 linkman
         if (!reqinfo.handlerUid) {
             let linkUid = uuidGenerator().replace(/-/g, '');
             let linkmanInfo = {
@@ -177,15 +177,15 @@ async function preUpdateTask(reqinfo, taksInfo) {
         } else {
             taksInfo.handlerUid = reqinfo.handlerUid;
             //更新linkman
-            await  mysql("user_linkman_info").select("*").where({handlerUid: reqinfo.handlerUid}).then(async (res) => {
+            await  mysql("user_linkman_info").select("*").where({linkUid: reqinfo.handlerUid}).then(async (res) => {
                 if (res && res[0]) {
-                    if (res[0].linkmanName !== reqinfo.handlerName || res[0].linkmanName !== reqinfo.handlerMail) {
+                    if (res[0].linkmanName !== reqinfo.handlerName || res[0].linkmanMail !== reqinfo.handlerMail) {
                         let updateLinkman = {
                             linkmanMail: reqinfo.handlerMail,
-                            handlerName: reqinfo.handlerName,
+                            linkmanName: reqinfo.handlerName,
                             version: res[0].version + 1
                         }
-                        await mysql("user_linkman_info").update(updateLinkman).where({handlerUid: reqinfo.handlerUid}).then(res => {
+                        await mysql("user_linkman_info").update(updateLinkman).where({linkUid: reqinfo.handlerUid}).then(res => {
                             console.log("更新linkman", res);
                         });
                     }

@@ -15,7 +15,7 @@ async function create(ctx, next) {
     let dayCycleInfo = ctx.request.body;
     dayCycleInfo.recordDate=dateUtil.formatUnixTime(new Date(),"Y-M-D");
     await db.create(CNF.DB_TABLE.cycle_info, dayCycleInfo, function (res) {
-        assert.notEqual(res, -1, "create day_cycle_info fail");
+        assert.notEqual(res, -1, "create cycle_info fail");
         SUCCESS(ctx, res);
     }).catch(function (error) {
         console.error(error);
