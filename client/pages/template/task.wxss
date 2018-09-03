@@ -9,7 +9,7 @@
 }
 
 .todo-box {
-  background: #fff;
+  background: #ebf6f7;
   height: 100%;
   border-radius: 10px;
 }

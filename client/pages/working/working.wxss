@@ -2,7 +2,7 @@
 
 page {
   width: 100%;
-  background: #e8ecef;
+  background: #fff;
 }
 
 .flex-tab {

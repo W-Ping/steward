@@ -2,7 +2,7 @@
 const nodemailer = require('nodemailer');
 const {mysql} = require('../qcloud')
 
-async function sendMail(accepter, options) {
+async function sendMail(accepter, options, callback) {
     // let account = await nodemailer.createTestAccount();
     let account;
     await mysql("email_config_info").select("*").then((res) => {
@@ -36,10 +36,16 @@ async function sendMail(accepter, options) {
         // Subject of the message
         subject: options.subject || '新分配的任务',
         // plaintext body
-        text: options.text,
+        text: options.text||"Test",
         // HTML body
-        html: '<p><b>任务分配人：</b>' + options.notifyName + '</p>' +
+        html:
+        '<p><b>任务ID：</b>' + options.taskId + '</p>' +
+        '<p><b>任务级别：</b>' + options.level + '级</p>' +
+        '<p><b>任务分配人：</b>' + options.notifyName + '</p>' +
+        '<p><b>任务计划（小时）：</b>' + options.planHour + '</p>' +
+        '<p><b>分配时间：</b>' + options.assignTime + '</p>' +
         '<p><b>任务名称：</b>' + options.taskName + '</p>' +
+        '<p><b>任务说明：</b>' + options.taskDescribe + '</p>' +
         '<br/><img src="cid:C00001"/>',
 
         // '<p><b>Hello</b> to myself <img src="cid:note@example.com"/></p>' +
@@ -78,7 +84,15 @@ async function sendMail(accepter, options) {
     console.log('Message sent successfully!');
     console.log(info);
     // console.log(nodemailer.getTestMessageUrl(info));
-
+    let response = {};
+    if (info && info.response == '250 Ok: queued as ') {
+        response.code = 1;
+        response.msg = info.messageId;
+    } else {
+        response.code = -1;
+        response.msg == "ERROR";
+    }
+    callback(response);
     // only needed when using pooled connections
     transporter.close();
 }

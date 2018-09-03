@@ -210,7 +210,7 @@ async function preUpdateTask(reqinfo, taksInfo) {
                             taskId: task.id,
                             handlerUid: taksInfo.handlerUid
                         }).then(update => {
-                            console.log("更新任务分配结果", resp)
+                            console.log("更新任务分配结果", update)
                         })
                     } else {
                         var params = {
@@ -348,12 +348,15 @@ async function notify(ctx, next) {
             let notifyInfo = {};
             notifyInfo.receiverUid = res[0].handlerUid;
             notifyInfo.receiverName = res[0].handlerName;
+            notifyInfo.receiverMail = res[0].handlerMail;
             notifyInfo.notifyUid = res[0].uid;
             notifyInfo.notifyName = res[0].realName;
-            notifyInfo.notifyType = 1;
-            notifyInfo.notifyValue = res[0].handlerMail;
-            notifyInfo.bizType = 1;
-            notifyInfo.taskName = res[0].taskName
+            notifyInfo.taskId = res[0].taskId;
+            notifyInfo.level=res[0].level;
+            notifyInfo.taskName=res[0].taskName;
+            notifyInfo.taskDescribe=res[0].taskDescribe;
+            notifyInfo.assignTime=res[0].assignTime;
+            notifyInfo.planHour=res[0].planHour;
             await notifyJs.save(notifyInfo, function (result) {
                 assert.notEqual(result, -1, 'notifyInfo task fail')
                 SUCCESS(ctx, result);
