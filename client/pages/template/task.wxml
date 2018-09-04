@@ -155,7 +155,7 @@
           <text>撤 销</text>
         </view>
         <view style='display: flex;flex-direction: row;align-items: center;justify-content: center;'>
-          <view class='harp-line'></view>
+          <view  style='background:#fff;'></view>
         </view>
         <view class='opt-item r-btn' data-index='{{index}}' bindtap='doneTask'>
           <text>完 成</text>
